@@ -1,5 +1,8 @@
 {
   "rewrites": [
-    { "source": "/(.*)", "destination": "/" }
+    {
+      "source": "/vpn(/.*)?",
+      "destination": "/"
+    }
   ]
 }
