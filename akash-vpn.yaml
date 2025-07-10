@@ -1,1 +1,56 @@
+version: "2.0"
+
+services:
+  vpn:
+    image: linuxserver/wireguard:latest
+    env:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Asia/Kolkata
+    expose:
+      - port: 51820
+        as: 51820
+        proto: udp
+        to:
+          - global
+    resources:
+      cpu:
+        units: 1
+      memory:
+        size: 512Mi
+      storage:
+        size: 1Gi
+
+profiles:
+  compute:
+    vpn:
+      resources:
+        cpu:
+          units: 1
+        memory:
+          size: 512Mi
+        storage:
+          size: 1Gi
+
+  placement:
+    dcloud:
+      attributes:
+        host: rtx3090
+        region: asia
+        country: india
+        city: bangalore
+        gpu: "false"
+      signedBy:
+        anyOf:
+          - "$PROVIDER"
+      pricing:
+        vpn:
+          denom: uakt
+          amount: 5000  # = 0.005 AKT/hr
+
+deployment:
+  vpn:
+    dcloud:
+      profile: vpn
+      count: 1
 
