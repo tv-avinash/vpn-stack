@@ -1,1 +1,17 @@
+version: "3.8"
+
+services:
+  wireguard:
+    image: linuxserver/wireguard:latest
+    container_name: wireguard
+    cap_add:
+      - NET_ADMIN
+      - SYS_MODULE
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Asia/Kolkata
+      - SERVERURL=auto  # Can replace with your IP/domain if static
+      - SERVERPORT=51820
+      - PEERS=1          # Number of client configs to generate
 
