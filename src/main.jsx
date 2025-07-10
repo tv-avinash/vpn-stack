@@ -1,8 +1,10 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Home from "./Home";
-import VPN from "./pages/VPN";
+
+// Pages
+import Home from "./pages/Home";
+import VPN from "./pages/VPN"; // Make sure this file exists
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
